@@ -15,11 +15,54 @@ class ApplicationController < Sinatra::Base
     student.to_json
   end
 
+  # Creating (POSTING) a new student
+  post '/students' do
+    student =Student.create(
+      adm: params[:adm],
+      fname: params[:fname],
+      lname: params[:lname],
+      adm: params[:adm],
+      dob: params[:dob],
+      district: params[:district],
+      division: params[:division],
+      location: params[:location],
+      sublocation: params[:sublocation],
+      village: params[:village],
+      ward: params[:ward],
+      ever_received_NGCDF: params[:ever_received_NGCDF],
+      how_much: params[:how_much],
+      year_: params[:year_],
+      any_other_bursary: params[:any_other_bursary],
+      year_received: params[:year_received],
+      amount: params[:amount],
+      parents_id: params[:parents_id],
+      school_id: params[:school_id]
+    )
+    student.to_json
+  end
+
 
   get "/parents" do
     # get all the parentsts from the db
     parents = Parent.all
     parents.to_json
+  end
+
+  # Creating a new parent
+   post '/parents' do
+    parent =Parent.create(
+      father_name: params[:father_name],
+      mother_name: params[:mother_name],
+      is_father_alive: params[:is_father_alive],
+      is_mother_alive: params[:is_mother_alive],
+      guardian_name: params[:guardian_name],
+      contact: params[:contact],
+      disability: params[:disability],
+      if_yes_disability_nature: params[:if_yes_disability_nature],
+      is_from_poor_household: params[:is_from_poor_household],
+      who_has_been_paying_your_fee: params[:who_has_been_paying_your_fee]
+    )
+    parent.to_json
   end
 
   # Deleting a parent
@@ -35,6 +78,19 @@ class ApplicationController < Sinatra::Base
     schools.to_json
   end
 
+  # Creating a new school
+  post '/schools' do
+    school =School.create(
+      form: params[:form],
+      stream: params[:stream],
+      term: params[:term],
+      last_term_position: params[:last_term_position],
+      principal: params[:principal],
+      contact: params[:contact],
+      students_id: params[:students_id]
+    )
+    school.to_json
+  end
   # Deleting a school
   delete './schools/:id' do
     school=School.find(params[:id])
@@ -48,6 +104,19 @@ class ApplicationController < Sinatra::Base
     siblings = Sibling.all
     siblings.to_json
   end
+  # Creating a new sibling
+    post '/siblings' do
+      sibling =Sibling.create(
+        name: params[:name],
+        relationship: params[:relationship],
+        school: params[:school],
+        form_class: params[:form_class],
+        total_fee: params[:total_fee],
+        outstanding_balance: params[:outstanding_balance],
+        students_id: params[:students_id]
+      )
+      sibling.to_json
+    end
 
   # Deleting sibling
   delete './siblings/:id' do
@@ -60,6 +129,17 @@ class ApplicationController < Sinatra::Base
     # get all the constraints from the db
     constraints = Constraint.all
     constraints.to_json
+  end
+
+  # Creating a new constarint entry
+  post '/constraints' do
+    constraint =Constraint.create(
+      how_many_children_do_you_have: params[:how_many_children_do_you_have],
+      how_many_in_secondary: params[:how_many_in_secondary],
+      how_many_in_post_secondary: params[:how_many_in_post_secondary],
+      parents_id: params[:parents_id]
+    )
+    constraint.to_json
   end
 
   # Deleting a constarint
