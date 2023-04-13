@@ -239,6 +239,17 @@ end
     parent.to_json(include: :students)
   end
 
+# new forms
+get "/students/new" do
+  # get all the students from the db
+  students = Student.all
+  students.to_json
+end
+
+get('/students/:id/edit') do
+  # "This will take us to a page with a form for updating an album with an ID of #{params[:id]}."
+end
+
 end
 
 
