@@ -13,6 +13,7 @@ parents = [
 ]
 
 # Define seed data for students table
+# 
 students = [
     {adm: 1234, fname: "Alice", mname: "M", lname: "Smith", dob: Date.new(2005, 7, 15), district: "Sample District", division: "Sample Division", location: "Sample Location", sublocation: "Sample Sublocation", village: "Sample Village", ward: "Sample Ward", ever_received_NGCDF: "Yes", how_much: 5000, year_: Date.new(2021, 1, 1), any_other_bursary: "No", year_received: Date.new(2020, 1, 1), amount: 2000, parents_id: 1, school_id: 1},
     {adm: 5678, fname: "Bob", mname: "J", lname: "Johnson", dob: Date.new(2006, 3, 22), district: "Sample District", division: "Sample Division", location: "Sample Location", sublocation: "Sample Sublocation", village: "Sample Village", ward: "Sample Ward", ever_received_NGCDF: "No", how_much: nil, year_: nil, any_other_bursary: "Yes", year_received: Date.new(2020, 1, 1), amount: 1500, parents_id: 1, school_id: 2},
